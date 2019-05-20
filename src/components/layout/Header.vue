@@ -10,11 +10,11 @@
           <Icon :type="mu.icon" />
           {{mu.name}}
         </MenuItem>
-        <MenuItem name="Management" to="/admin" v-if="user['管理员']">
+        <!-- <MenuItem name="Management" to="/admin" v-if="user['管理员']">
           <Icon type="ios-settings" />Management
-        </MenuItem>
+        </MenuItem> -->
       </Menu>
-      <div class="flr ml15" v-if="user['UID']">
+      <!-- <div class="flr ml15" v-if="user['UID']">
         <Dropdown class="fll mr15"> 
           <p>
             <Avatar class="aActive" src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="large" style="margin-top: 8px"/>
@@ -31,7 +31,7 @@
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
-      </div>
+      </div> -->
     </div>
     <!-- <div :class="{ 'header-little': activeMenu != 'Me', 'header-large': activeMenu == 'Me'}">
       <div class="logo-box">
@@ -93,18 +93,6 @@
             }
           }
         }, 500);
-      },
-      logout: function(){
-        var usrInfo = {
-          'UID': null,
-          '姓名': null,
-          '用户名': null,
-          '管理员': false
-        };
-        this.delCookie('checkLogin');
-        this.updateUserInfo(usrInfo);
-        this.$router.push({ path: '/home' });
-        this.activeMenu = 'Me';
       }
     },
     created: function(){

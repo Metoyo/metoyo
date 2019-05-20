@@ -1,5 +1,9 @@
 <template>
   <div class="login">
+    <!-- <div class="fz16">
+      <router-link to="/home">首页</router-link>
+      <router-link to="/admin" class="ml15">管理</router-link>
+    </div> -->
     <Form ref="formLogin" :model="formLogin" :rules="ruleLogin">
       <FormItem prop="userName" class="mt30">
         <Input type="text" v-model="formLogin.userName" size="large" placeholder="请输入用户名"></Input>
@@ -11,11 +15,11 @@
         <Input type="text" v-model="formLogin.authCode" number size="large" placeholder="请输入验证码"></Input>
       </FormItem>
       <FormItem class="mt30 textRight">
-        <Button type="primary" @click="login('formLogin')" size="large" class="w100">登录</Button>
+        <router-link to="/home" class="fz14 fll">首页</router-link>
+        <Button type="primary" @click="login('formLogin')" size="large" class="w100 ml15">登录</Button>
         <Button @click="reset('formLogin')" style="margin-left: 8px" size="large" class="w100">重置</Button>
       </FormItem>
     </Form>
-    <span>{{user['用户名']}}</span>
   </div>
 </template>
 
@@ -111,7 +115,10 @@ export default {
 <style scoped>
 .login{
   width: 400px;
-  margin: 20px auto;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform:translate(200px, -60%);
 }
 .auth-input{
   width: 260px;

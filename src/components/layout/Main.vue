@@ -1,37 +1,37 @@
 <template>
-  <div class="main">
-    <router-view/>
+  <div id="main" class="main">
+    <Header></Header>
+    <transition name="fade" mode="out-in" appear> 
+      <router-view/>
+    </transition>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+// import { mapState, mapMutations } from 'vuex';
 
 export default {
   name: 'Main',
+  components: {
+    Header,
+    Footer
+  },
   data: function(){
     return {
 
     }
   },
   computed: {
-    ...mapState(['user']),
+    // ...mapState(['user']),
   },
   methods: {
-    ...mapMutations(['updateUserInfo']),
-    gotoModule: function(){
-      if(this.user['管理员']){
-        this.$router.push({ path: '/editor' });
-      }
-      else{
-        this.$router.push({ path: '/login' });
-      }
-    },
+    // ...mapMutations(['updateUserInfo']),
   },
   created: function(){
-   console.log('hello');
-  },
-  mounted: function(){
+    this.$router.push({path: '/home'});
   }
 }
 </script>

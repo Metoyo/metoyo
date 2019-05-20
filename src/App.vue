@@ -1,24 +1,25 @@
 <template>
   <div id="app">
-    <!-- <Header></Header> -->
+    <router-view></router-view>
+    <!-- <Header></Header>
     <div id="main">
       <transition name="fade" mode="out-in" appear> 
         <router-view/>
       </transition>
     </div>
-    <Footer></Footer>
+    <Footer></Footer> -->
   </div>
 </template>
 
 <script>
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+// import Header from '@/components/layout/Header';
+// import Footer from '@/components/layout/Footer';
 
 export default {
   name: 'App',
   components: {
     // Header,
-    Footer
+    // Footer
   }
 }
 </script>
@@ -36,17 +37,38 @@ html,body{
   color: #2c3e50;
 }
 #main{
-  padding: 20px 0;
   min-height: 560px;
+}
+.fz14{
+  font-size: 14px;
+}
+.fz16{
+  font-size: 16px;
 }
 .mt10{
   margin-top: 10px;
 }
+.mt20{
+  margin-top: 20px;
+}
 .mt30{
   margin-top: 30px;
 }
+.mr10{
+  margin-right: 10px;
+}
+.mr15{
+  margin-right: 15px;
+}
+.ml10{
+  margin-left: 10px;
+}
 .ml15{
   margin-left: 15px;
+}
+.ptb10{
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .flr{
   float: right;
@@ -57,8 +79,20 @@ html,body{
 .w100{
   width: 100px;
 }
+.clFff{
+  color: #ffffff;
+}
+.cl000{
+  color: #000000;
+}
+.bdbCf{
+  border-bottom: 1px solid #cfcfcf;
+}
 .textRight{
-  text-align: right
+  text-align: right;
+}
+.textLeft{
+  text-align: left;
 }
 .aActive{
   cursor: pointer;

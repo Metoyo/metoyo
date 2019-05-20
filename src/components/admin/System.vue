@@ -1,12 +1,12 @@
 <template>
-  <div class="editor">
-    编辑器
+  <div class="system-editor">
+    系统设置
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Editor',
+  name: 'System',
   data: function(){
     return {
     }
