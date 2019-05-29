@@ -106,6 +106,11 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  #header{
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+  }
   .ivu-menu-horizontal{
     height: 57px;
     line-height: 57px;

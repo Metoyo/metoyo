@@ -8,7 +8,10 @@ const Goods = () => import(/* webpackChunkName: 'goods' */ '@/components/goods/G
 const Admin = () => import(/* webpackChunkName: 'admin' */ '@/components/admin/Admin');
 const Login = () => import(/* webpackChunkName: 'login' */ '@/components/admin/Login');
 const Article = () => import(/* webpackChunkName: 'article' */ '@/components/admin/Article');
+const ArticleList = () => import(/* webpackChunkName: 'articlelist' */ '@/components/admin/ArticleList');
+const SortAndTag = () => import(/* webpackChunkName: 'sortandtag' */ '@/components/admin/SortAndTag');
 const Cargo = () => import(/* webpackChunkName: 'cargo' */ '@/components/admin/Cargo');
+const CargoList = () => import(/* webpackChunkName: 'cargolist' */ '@/components/admin/CargoList');
 const Profile = () => import(/* webpackChunkName: 'profile' */ '@/components/admin/Profile');
 const System = () => import(/* webpackChunkName: 'system' */ '@/components/admin/System');
 
@@ -79,7 +82,15 @@ export default new Router({
       component: Admin,
       children: [
         {
-          path: '/blogeditor', //文章编辑
+          path: '/articlelist', //文章列表
+          name: 'ArticleList',
+          meta: {
+            requireAuth: true
+          },
+          component: ArticleList
+        },
+        {
+          path: '/articleditor', //文章编辑
           name: 'Article',
           meta: {
             requireAuth: true
@@ -87,7 +98,23 @@ export default new Router({
           component: Article
         },
         {
-          path: '/cargoeditor', //货物编辑
+          path: '/sortandtag', //分类和标签
+          name: 'SortAndTag',
+          meta: {
+            requireAuth: true
+          },
+          component: SortAndTag
+        },
+        {
+          path: '/cargolist', //商品列表
+          name: 'CargoList',
+          meta: {
+            requireAuth: true
+          },
+          component: CargoList
+        },
+        {
+          path: '/cargoeditor', //商品编辑
           name: 'Cargo',
           meta: {
             requireAuth: true

@@ -33,11 +33,36 @@ html,body{
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
 }
 #main{
   min-height: 560px;
+}
+.container{
+  max-width: 1220px;
+  min-width: 1020px;
+  margin: 0 auto;
+  display: table;
+  margin-bottom: 20px;
+}
+.content{
+  max-width: 960px;
+  display: table-cell;
+}
+.content-inner{
+  margin: 80px 20px 0 0;
+}
+.side-bar{
+  width: 240px;
+  display: table-cell;
+}
+.side-bar-inner{
+  position: fixed;
+  top: 80px;
+  width: 240px;
+  padding: 10px;
+  box-shadow: 0 0 14px rgba(202,203,203,0.5);
 }
 .fz14{
   font-size: 14px;
@@ -47,6 +72,9 @@ html,body{
 }
 .mt10{
   margin-top: 10px;
+}
+.mt15{
+  margin-top: 15px;
 }
 .mt20{
   margin-top: 20px;
@@ -60,11 +88,17 @@ html,body{
 .mr15{
   margin-right: 15px;
 }
+.mb30{
+  margin-bottom: 30px;
+}
 .ml10{
   margin-left: 10px;
 }
 .ml15{
   margin-left: 15px;
+}
+.p15{
+  padding: 15px;
 }
 .ptb10{
   padding-top: 10px;
@@ -79,14 +113,26 @@ html,body{
 .w100{
   width: 100px;
 }
+.w200{
+  width: 200px;
+}
 .clFff{
   color: #ffffff;
 }
 .cl000{
   color: #000000;
 }
+.bd1 {
+  border: 1px solid #cfcfcf;
+}
 .bdbCf{
   border-bottom: 1px solid #cfcfcf;
+}
+.bdrds{
+  border-radius: 4px;
+}
+.textCenter{
+  text-align: center;
 }
 .textRight{
   text-align: right;
@@ -99,5 +145,12 @@ html,body{
 }
 .ulList{
   list-style: none;
+}
+.ivu-form-label-left .ivu-form-item-label{
+  font-size: 14px;
+}
+.article{
+  padding: 25px;
+  box-shadow: 0 0 14px rgba(202,203,203,0.5);
 }
 </style>

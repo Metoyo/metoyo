@@ -33,21 +33,51 @@
           <span class="aActive mt10 flr mr10" @click="logout">退出</span>
         </Col>
       </Row>
-      <Menu active-name="博客文章" theme="dark" width="auto">
-        <MenuItem v-for="(mu, index) in menuList" :key="index" :name="mu.name" :to="mu.url">
+      <Menu active-name="文章管理" :open-names="['内容管理']" theme="dark" width="auto" accordion>
+        <MenuItem name="个人设置" to="/profileditor">
+          <Icon type="ios-person" /> 个人设置
+        </MenuItem>
+        <Submenu name="内容管理">
+          <template slot="title">
+            <Icon type="ios-paper" /> 内容管理
+          </template>
+          <MenuItem name="文章管理" to="/articlelist">
+            文章管理
+          </MenuItem>
+          <MenuItem name="新建文章" to="/articleditor">
+            新建文章
+          </MenuItem>
+          <MenuItem name="分类和标签" to="/sortandtag">
+            分类和标签
+          </MenuItem>
+        </Submenu>
+        <Submenu name="商品管理">
+          <template slot="title">
+            <Icon type="ios-cart" /> 商品管理
+          </template>
+          <MenuItem name="商品列表" to="/cargolist">
+            商品列表
+          </MenuItem>
+          <MenuItem name="添加商品" to="/cargoeditor">
+            添加商品
+          </MenuItem>
+        </Submenu>
+        <!-- <MenuItem v-for="(mu, index) in menuList" :key="index" :name="mu.name" :to="mu.url">
           <Icon :type="mu.icon" />
           {{mu.name}}
+        </MenuItem> -->
+        <MenuItem name="系统设置" to="/systemeditor">
+          <Icon type="ios-settings" /> 系统设置
         </MenuItem>
-        <MenuItem name="5">
-          <Icon type="ios-home" /> 
-          <router-link to="/home" class="clFff">去首页</router-link>
+        <MenuItem name="去首页" to="/home">
+          <Icon type="ios-home" /> 去首页
         </MenuItem>
       </Menu>
     </Sider>
     <Layout :style="{marginLeft: '200px'}">
       <Content :style="{padding: '16px'}">
         <Card>
-          <div style="height: 600px">
+          <div style="min-height: 600px">
             <transition name="fade" mode="out-in" appear> 
               <router-view/>
             </transition>
@@ -65,12 +95,12 @@ export default {
   name: 'Admin',
   data: function(){
     return {
-      menuList: [
-        { name: '个人设置', url: '/profileditor', icon: 'ios-person'},
-        { name: '博客文章', url: '/blogeditor', icon: 'ios-paper'},
-        { name: '商品货物', url: '/cargoeditor', icon: 'ios-cart'},
-        { name: '系统设置', url: '/systemeditor', icon: 'ios-settings'},
-      ],
+      // menuList: [
+      //   { name: '个人设置', url: '/profileditor', icon: 'ios-person'},
+      //   { name: '博客文章', url: '/blogeditor', icon: 'ios-paper'},
+      //   { name: '商品货物', url: '/cargoeditor', icon: 'ios-cart'},
+      //   { name: '系统设置', url: '/systemeditor', icon: 'ios-settings'},
+      // ],
     }
   },
   computed: {
@@ -80,7 +110,7 @@ export default {
     ...mapMutations(['updateUserInfo']),
     gotoModule: function(){
       if(this.user['管理员']){
-        this.$router.push({ path: '/blogeditor' });
+        this.$router.push({ path: '/articlelist' });
       }
       else{
         this.$router.push({ path: '/login' });
@@ -101,7 +131,7 @@ export default {
   created: function(){
   },
   mounted: function(){
-    // this.gotoModule();
+    this.gotoModule();
   }
 }
 </script>
