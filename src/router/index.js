@@ -2,7 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 const Main = () => import(/* webpackChunkName: 'main' */ '@/components/layout/Main');
 const Home = () => import(/* webpackChunkName: 'home' */ '@/components/me/Home');
-const Blog = () => import(/* webpackChunkName: 'blog' */ '@/components/blog/Blog');
+const BlogHome = () => import(/* webpackChunkName: 'bloghome' */ '@/components/blog/BlogHome');
+const BlogPost = () => import(/* webpackChunkName: 'blogpost' */ '@/components/blog/BlogPost');
 const Love = () => import(/* webpackChunkName: 'love' */ '@/components/love/Love');
 const Goods = () => import(/* webpackChunkName: 'goods' */ '@/components/goods/Goods');
 const Admin = () => import(/* webpackChunkName: 'admin' */ '@/components/admin/Admin');
@@ -49,11 +50,19 @@ export default new Router({
         },
         {
           path: '/blog', //博客
-          name: 'Blog',
+          name: 'BlogHome',
           meta: {
             requireAuth: false
           },
-          component: Blog
+          component: BlogHome
+        },
+        {
+          path: '/blog/:id', //博客详情
+          name: 'BlogPost',
+          meta: {
+            requireAuth: false
+          },
+          component: BlogPost
         },
         {
           path: '/love', //我的所爱

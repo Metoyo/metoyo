@@ -1,8 +1,10 @@
 <template>
-  <div class="goods">
-    <h1>
-      商品
-    </h1>
+  <div class="container goods">
+    <div class="content">
+      <h1>
+        商品
+      </h1>
+    </div>
   </div>
 </template>
 

@@ -7,16 +7,18 @@ import router from './router';
 import axios from 'axios';
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
+import PlgCommon from './plugins/common/common';
 
 Vue.config.productionTip = false;
 Vue.use(Vuex);
 Vue.use(iView);
+Vue.use(PlgCommon);
 
 //Vuex配置
 const store = new Vuex.Store({
   state: {
-    // domain: 'http://127.0.0.1:8080', //保存后台请求的地址，修改时方便
-    domain: '', //保存后台请求的地址，修改时方便
+    domain: 'http://127.0.0.1:8000', //保存后台请求的地址，修改时方便
+    // domain: '', //保存后台请求的地址，修改时方便
     // activeMenu: 'Me',
     user: { //保存用户信息
       'UID': null,

@@ -31,7 +31,11 @@ export default {
     // ...mapMutations(['updateUserInfo']),
   },
   created: function(){
-    this.$router.push({path: '/home'});
+    // this.$router.push({path: '/home'});
+    var localUrl = this.$router.history.current;
+    if(localUrl.name == 'Main'){
+      this.$router.push({path: '/home'});
+    }
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div id="header" class="header-little">
+  <header id="header" class="header-little">
     <!-- 首页导航 -->
     <div class="logo-box fll">
       <img class="logo" src="@/assets/logo.png">
@@ -49,7 +49,7 @@
         </div>
       </div>
     </div> -->
-  </div>
+  </header>
 </template>
 <script>
   import { mapState, mapMutations } from 'vuex';
@@ -85,11 +85,18 @@
             var menuLen = that.menuList.length;
             var currentPath = localUrl.path;
             for(var i = 0; i < menuLen; i++){
-              if(that.menuList[i].url == currentPath){
-                var currentMenu = that.menuList[i].name;
+              var currentMenu = that.menuList[i].name;
+              var currentUrl = that.menuList[i].url;
+              var hasIn = currentPath.indexOf(currentUrl);
+              if(hasIn >= 0){
                 that.changeMenu(currentMenu);
                 break;
               }
+              // if(that.menuList[i].url == currentPath){
+              //   var currentMenu = that.menuList[i].name;
+              //   that.changeMenu(currentMenu);
+              //   break;
+              // }
             }
           }
         }, 500);
@@ -107,18 +114,17 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   #header{
+    top: 0;
     position: fixed;
     width: 100%;
     overflow: hidden;
+    z-index: 10;
   }
   .ivu-menu-horizontal{
     height: 57px;
     line-height: 57px;
     display: inline-block;
   }
-  /* .header-large{
-    text-align: center;
-  } */
   .header-little{
     height: 56px;
     flex-direction: row;
@@ -127,12 +133,6 @@
     padding: 0 30px;
     box-shadow: 0 2px 10px #bbb;
   }
-  /* .header-little .logo-box{
-    float: left;
-  }
-  .header-little .right-box{
-    float: right;
-  } */
   .logo{
     width: 42px;
     height: 42px;

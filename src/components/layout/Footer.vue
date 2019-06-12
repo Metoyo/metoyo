@@ -1,5 +1,5 @@
 <template>
-  <div id="footer">
+  <footer id="footer">
     <p>
       Designed and developed by Metoyo.
       Base on <a href="https://www.vuejs.org" target="_blank" rel="vue.js">Vue.js</a>,
@@ -7,7 +7,7 @@
       <a href="https://www.nodejs.org" target="_blank" rel="nodejs">Nodejs</a> 
     </p>
     <p>Copyright © 2018-2019 metoyo.com. All Rights Reserved.</p>
-  </div>
+  </footer>
 </template>
 <script>
   export default {

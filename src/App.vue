@@ -29,6 +29,15 @@ html,body{
   margin: 0;
   font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
+a{
+  color: #2c3e50;
+}
+a:hover{
+  color: #2d8cf0;
+}
+img{
+  max-width: 100%;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -44,14 +53,15 @@ html,body{
   min-width: 1020px;
   margin: 0 auto;
   display: table;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-top: 80px;
 }
 .content{
   max-width: 960px;
   display: table-cell;
 }
 .content-inner{
-  margin: 80px 20px 0 0;
+  margin-right: 20px;
 }
 .side-bar{
   width: 240px;
@@ -61,14 +71,18 @@ html,body{
   position: fixed;
   top: 80px;
   width: 240px;
-  padding: 10px;
-  box-shadow: 0 0 14px rgba(202,203,203,0.5);
 }
 .fz14{
   font-size: 14px;
 }
 .fz16{
   font-size: 16px;
+}
+.fz24{
+  font-size: 24px;
+}
+.fz36{
+  font-size: 36px;
 }
 .mt10{
   margin-top: 10px;
@@ -97,8 +111,14 @@ html,body{
 .ml15{
   margin-left: 15px;
 }
+.ptb5{
+  padding: 5px 0;
+}
 .p15{
   padding: 15px;
+}
+.plr10{
+  padding: 0 10px;
 }
 .ptb10{
   padding-top: 10px;
@@ -146,11 +166,61 @@ html,body{
 .ulList{
   list-style: none;
 }
+.ulList li{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 14px;
+}
 .ivu-form-label-left .ivu-form-item-label{
   font-size: 14px;
 }
 .article{
+  margin-bottom: 30px;
   padding: 25px;
-  box-shadow: 0 0 14px rgba(202,203,203,0.5);
+  background-color: #fcfcfc;
+  box-shadow: 0 0 4px rgb(160, 160, 160, 0.5);
+}
+.title{
+  font-size: 24px;
+  color: #000;
+}
+.sub-title{
+  font-weight: normal;
+  display: inline-block;
+  width: 100%;
+  line-height: 26px;
+}
+.cont{
+  font-size: 14px;
+  line-height: 28px;
+}
+.cont img{
+  max-width: 100%;
+}
+.cont p{
+  margin-top: 10px;
+}
+.divider::after{
+  content: "/";
+  padding: 0 5px;
+}
+.widget{
+  width: 100%;
+  padding: 15px;
+  background-color: #fcfcfc;
+  box-shadow: 0 0 4px rgb(160, 160, 160, 0.5);
+}
+.widget-title{
+  font-size: 16px;
+}
+.post-tag{
+  font-size: 14px;
+  margin-right: 10px;
+  line-height: 32px;
+  display: inline-block;
+}
+.ivu-input,
+.ivu-table{
+  font-size: 14px;
 }
 </style>

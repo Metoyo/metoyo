@@ -1,9 +1,8 @@
 <template>
-  <div class="love">
-    <h1>我的最爱</h1>
-    <p>
-      
-    </p>
+  <div class="container love">
+    <div class="content">
+      <h1>我的最爱</h1>
+    </div>
   </div>
 </template>
 
