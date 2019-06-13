@@ -8,7 +8,7 @@
       <Menu mode="horizontal" theme="light" :active-name="activeMenu" class="fll" @on-select='changeMenu'>
         <MenuItem v-for="(mu, index) in menuList" :key="index" :name="mu.name" :to="mu.url">
           <Icon :type="mu.icon" />
-          {{mu.name}}
+          {{mu.username}}
         </MenuItem>
         <!-- <MenuItem name="Management" to="/admin" v-if="user['管理员']">
           <Icon type="ios-settings" />Management

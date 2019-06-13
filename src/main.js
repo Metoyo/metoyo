@@ -21,10 +21,12 @@ const store = new Vuex.Store({
     // domain: '', //保存后台请求的地址，修改时方便
     // activeMenu: 'Me',
     user: { //保存用户信息
-      'UID': null,
-      '姓名': null,
-      '用户名': null,
-      '管理员': false
+      _id: null,
+      // name: null,
+      username: null,
+      email: null,
+      phone: null,
+      admin: false
     }
   },
   mutations: {

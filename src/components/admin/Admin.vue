@@ -27,7 +27,7 @@
           <Avatar class="ml10" src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="large"/>
         </Col>
         <Col span="12" class="clFff">
-          <span class="mt10 fll">{{user['用户名']}}</span>
+          <span class="mt10 fll">{{user.username}}</span>
         </Col>
         <Col span="5" class="clFff">
           <span class="aActive mt10 flr mr10" @click="logout">退出</span>
@@ -109,7 +109,7 @@ export default {
   methods: {
     ...mapMutations(['updateUserInfo']),
     gotoModule: function(){
-      if(this.user['管理员']){
+      if(this.user.admin){
         this.$router.push({ path: '/articlelist' });
       }
       else{
@@ -118,10 +118,12 @@ export default {
     },
     logout: function(){
       var usrInfo = {
-        'UID': null,
-        '姓名': null,
-        '用户名': null,
-        '管理员': false
+        _id: null,
+        // name: null,
+        username: null,
+        email: null,
+        phone: null,
+        admin: false
       };
       this.delCookie('checkLogin');
       this.updateUserInfo(usrInfo);

@@ -8,6 +8,7 @@ const Love = () => import(/* webpackChunkName: 'love' */ '@/components/love/Love
 const Goods = () => import(/* webpackChunkName: 'goods' */ '@/components/goods/Goods');
 const Admin = () => import(/* webpackChunkName: 'admin' */ '@/components/admin/Admin');
 const Login = () => import(/* webpackChunkName: 'login' */ '@/components/admin/Login');
+const Register = () => import(/* webpackChunkName: 'register' */ '@/components/admin/Register');
 const Article = () => import(/* webpackChunkName: 'article' */ '@/components/admin/Article');
 const ArticleList = () => import(/* webpackChunkName: 'articlelist' */ '@/components/admin/ArticleList');
 const SortAndTag = () => import(/* webpackChunkName: 'sortandtag' */ '@/components/admin/SortAndTag');
@@ -31,6 +32,14 @@ export default new Router({
         requireAuth: false
       },
       component: Login
+    },
+    {
+      path: '/register', //注册
+      name: 'Register',
+      meta: {
+        requireAuth: false
+      },
+      component: Register
     },
     {
       path: '/main', //客户页面

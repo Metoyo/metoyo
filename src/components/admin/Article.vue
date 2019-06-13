@@ -12,7 +12,7 @@
         <Select v-model="article.sort" style="width:300px">
           <Option v-for="item in sortList" :value="item.name" :key="item.id">{{ item.name }}</Option>
         </Select>
-        <Button type="text" @click="sortBoxPop">创建分类</Button>
+        <!-- <Button type="text" @click="sortBoxPop">创建分类</Button> -->
         <!-- 分类管理 -->
         <!-- <transition name="fade">
           <div class="bd1 p15 bdrds" v-if="showSortAdd">
@@ -104,7 +104,7 @@ export default {
       ],
       tagList: [],
       showTagBox: false,
-      showSortAdd: false,
+      // showSortAdd: false,
       newTagName: ''
     }
   },
@@ -126,9 +126,9 @@ export default {
       // newEd.txt.text(); //读取text
     },
     //创建分类弹出
-    sortBoxPop: function(){
-      this.showSortAdd = !this.showSortAdd;
-    },
+    // sortBoxPop: function(){
+    //   this.showSortAdd = !this.showSortAdd;
+    // },
     //添加标签弹出
     addTagPop: function(){
       this.showTagBox = !this.showTagBox;

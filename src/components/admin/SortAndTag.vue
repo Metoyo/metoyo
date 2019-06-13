@@ -19,7 +19,7 @@
         <Button type="primary" @click="addTag">保存</Button>
       </div>
       <div class="mt15">
-        <Tag class="mr10" v-for="item in allTags" :name="item.id" :key="item.id" closable @on-close="deleteTag">
+        <Tag class="mr10" v-for="item in allTags" :name="item._id" :key="item._id" closable @on-close="deleteTag">
           {{item.name}}
         </Tag>
       </div>
@@ -30,12 +30,12 @@
 <script>
 import { mapState } from 'vuex';
 import Lazy from 'lazy.js';
-import { throws } from 'assert';
 
 var that = null;
 var $http = null;
 var hostName = '';
 const categoryUrl = '/category'; //分类
+const tagUrl = '/tag'; //分类
 export default {
   name: 'SortAndTag',
   data: function(){
@@ -97,28 +97,7 @@ export default {
           }
         }
       ],
-      allTags: [
-        {
-          id: 1,
-          name: '新疆',
-          ckd: false
-        },
-        {
-          id: 2,
-          name: '美食',
-          ckd: false
-        },
-        {
-          id: 3,
-          name: '阿勒泰',
-          ckd: false
-        },
-        {
-          id: 4,
-          name: '北屯',
-          ckd: false
-        }
-      ],
+      allTags: [],
       newTagName: '',
       newCategoryName: '',
       categoryAdd: true,
@@ -141,7 +120,7 @@ export default {
         url: hostName + categoryUrl,
         params: {}
       };
-      var msgLd = that.$Message.loading({content: '分类创建中…', duration: 0});
+      var msgLd = that.$Message.loading({content: '分类查询中…', duration: 0});
       that.categoryList = [];
       $http(obj).then(function(res){
         if(res.status === 200 && res.data){
@@ -323,42 +302,104 @@ export default {
       var edIdx = this.page.pageSize * p;
       this.page.currentPage = p;
     },
+    //查询标签
+    queryTag: function(){
+      var obj = {
+        method: 'GET',
+        url: hostName + tagUrl,
+        params: {}
+      };
+      var msgLd = that.$Message.loading({content: '标签查询中…', duration: 0});
+      that.allTags = [];
+      $http(obj).then(function(res){
+        if(res.status === 200 && res.data){
+          var data = that.$comn.toObj(res.data);
+          msgLd();
+          if(data.result){
+            Lazy(data.data).each(function(tg){
+              tg.ckd = false;
+            });
+            that.allTags = data.data;
+          }
+          else{
+            that.$Message.error({content: data.error, duration: 300, closable: true});
+          }
+        }
+        else{
+          msgLd();
+          that.$Message.error({content: '错误状态码：' + res.status, duration: 300, closable: true});
+        }
+      })
+      .catch(function(error){
+        msgLd();
+        that.$Message.error({content: error, duration: 300, closable: true});
+      });
+    },
     //添加标签
     addTag: function(){
       var obj = {
-        methods: 'put',
-        url: tagUrl,
+        method: 'PUT',
+        url: hostName + tagUrl,
         data: {
-          name: this.newTagName
+          name: that.newTagName
         }
       };
-      var msgLd = this.$Message.loading({content: '创建中...', duration: 0});
+      var msgLd = that.$Message.loading({content: '标签创建中...', duration: 0});
       $http(obj).then(function(res){
         if(res.status === 200 && res.data){
           var data = res.data;
           if(data.result){
-            var tagTemp = {
-              id: data.data['id'],
-              name: data.data['name'],
-              ckd: false
-            };
-            this.newTagName = '';
-            this.allTags.push(tagTemp);
+            that.queryTag();
+            that.newTagName = '';
           }
           else{
-            this.$Message.error({content: data.error, duration: 300, closable: true});
+            that.$Message.error({content: data.error, duration: 300, closable: true});
           }
           msgLd();
         }
         else{
           msgLd();
-          this.$Message.error({content: '错误状态码：' + res.status, duration: 30, closable: true});
+          that.$Message.error({content: '错误状态码：' + res.status, duration: 30, closable: true});
         }
       });
     },
     //删除标签
     deleteTag: function(event, name){
-      console.log(name);
+      var obj = {
+        method: 'DELETE',
+        url: hostName + tagUrl,
+        params: {
+          id: name
+        }
+      };
+      if(!name){
+        that.$Message.warning('缺少标签ID！');
+        return ;
+      }
+      var msgLd = that.$Message.loading({content: '分类删除中…', duration: 0});
+      $http(obj).then(function(res){
+        if(res.status === 200 && res.data){
+          var data = that.$comn.toObj(res.data);
+          msgLd();
+          if(data.result){
+            that.allTags = Lazy(that.allTags).reject(function(tg){
+              return tg._id == name;
+            }).toArray();
+            that.$Message.success('标签删除成功！');
+          }
+          else{
+            that.$Message.error({content: data.error, duration: 300, closable: true});
+          }
+        }
+        else{
+          msgLd();
+          that.$Message.error({content: '错误状态码：' + res.status, duration: 300, closable: true});
+        }
+      })
+      .catch(function(error){
+        msgLd();
+        that.$Message.error({content: error, duration: 300, closable: true});
+      });
     },
     //取消
     cancelFun: function(param){
