@@ -13,7 +13,7 @@ export default {
     let comnFun = {
       dateToTz: null,
       cloneObj: null,
-      qxJudge: null,
+      dateFromObjectId: null,
       checkBrowser: null,
       dateToLc: null,
       dateToLcStr: null,
@@ -117,24 +117,8 @@ export default {
     };
 
     //权限判断
-    comnFun.qxJudge = (jsArr, dtNum, qxNum) => {
-      var result = false;
-      var jsLen = jsArr.length || 0;
-      for(var i = 0; i < jsLen; i++){
-        var qxArr = jsArr[i]['数据权限'] || [];
-        if(qxArr.length > 0){
-          var qxLen = qxArr.length;
-          for(var j = 0; j < qxLen; j++){
-            var qxItem = qxArr[j];
-            var sjRlt = ((qxItem['数据种类'] & dtNum) == dtNum);
-            var qxRlt = ((qxItem['权限'] & qxNum) == qxNum);
-            result = sjRlt && qxRlt;
-            if(result){
-              break;
-            }
-          }
-        }
-      }
+    comnFun.dateFromObjectId = (objectId) => {
+      var result = new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
       return result;
     };
 

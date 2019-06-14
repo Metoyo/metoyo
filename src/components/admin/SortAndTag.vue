@@ -7,7 +7,7 @@
         <Button type="primary" @click="saveCategory">保存</Button>
         <Button type="error" class="ml10" @click="cancelFun('category')">取消</Button>
       </div>
-      <Table class="mt15" stripe :columns="categoryCol" :data="categoryList"></Table>
+      <Table class="mt15" border stripe :columns="categoryCol" :data="categoryList"></Table>
       <!-- <div class="mt10">
         <Page :total="page.total" :current="page.currentPage" :page-size="page.pageSize" size="small" show-total @on-change="changePage"/>
       </div> -->
@@ -30,10 +30,12 @@
 <script>
 import { mapState } from 'vuex';
 import Lazy from 'lazy.js';
+import { totalmem } from 'os';
+import { truncate } from 'fs';
 
 var that = null;
 var $http = null;
-var hostName = '';
+var hostName = null;
 const categoryUrl = '/category'; //分类
 const tagUrl = '/tag'; //分类
 export default {
@@ -48,7 +50,7 @@ export default {
         },
         {
           title: '操作',
-          key: 'action',
+          key: '操作',
           width: 150,
           align: 'center',
           render: (h, params) => {
@@ -118,7 +120,9 @@ export default {
       var obj = {
         method: 'GET',
         url: hostName + categoryUrl,
-        params: {}
+        params: {
+          // '只查数量': true
+        }
       };
       var msgLd = that.$Message.loading({content: '分类查询中…', duration: 0});
       that.categoryList = [];
@@ -252,10 +256,6 @@ export default {
             id: colId
           }
         };
-        if(!colId){
-          that.$Message.warning('缺少分类ID！');
-          return ;
-        }
         var msgLd = that.$Message.loading({content: '分类删除中…', duration: 0});
         $http(obj).then(function(res){
           if(res.status === 200 && res.data){
@@ -415,6 +415,7 @@ export default {
     that = this;
     hostName = this.domain;
     that.queryCategory();
+    that.queryTag();
     // this.page.total = this.categoryList.length;
   }
 }
