@@ -30,8 +30,6 @@
 <script>
 import { mapState } from 'vuex';
 import Lazy from 'lazy.js';
-import { totalmem } from 'os';
-import { truncate } from 'fs';
 
 var that = null;
 var $http = null;

@@ -186,7 +186,9 @@ export default {
         url: hostName + blogUrl,
         params: {
           '跳过条数': 0,
-          '查询条数': 0
+          '查询条数': 0,
+          // "author.uid": "5d022ac66cc8836234c8ac92"
+          // 'category.category_id': '5d00aef8a281e801980109df'
         }
       };
       obj.params['跳过条数'] = that.page.pageSize * (that.page.currentPage - 1);
@@ -202,6 +204,7 @@ export default {
               blg.createtime = that.$comn.dateFromObjectId(blg._id);
             });
             that.blogList = data.data;
+            console.log(data.data);
             // that.page.total = that.categoryList.length;
           }
           else{
