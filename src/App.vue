@@ -145,6 +145,15 @@ img{
 .cl000{
   color: #000000;
 }
+.clRed{
+  color: #ff0000;
+}
+.clGreen{
+  color: #008000;
+}
+.clGray{
+  color: #bbbbbb;
+}
 .bd1 {
   border: 1px solid #cfcfcf;
 }

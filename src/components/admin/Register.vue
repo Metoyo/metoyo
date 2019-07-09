@@ -233,20 +233,9 @@ export default {
                 that.$Message.error({content: '错误状态码：' + res.status, duration: 30, closable: true});
               }
             });
-          })
-          // var usrInfo = {
-          //   'UID': 1,
-          //   '姓名': '张松涛',
-          //   '用户名': 'Metoyo',
-          //   '管理员': true
-          // };
-          // var usrInfoStr = JSON.stringify(usrInfo);
-          // that.setCookie('checkLogin', usrInfoStr);
-          // that.updateUserInfo(usrInfo);
-          // that.$router.push({ path: '/admin' });
-          // that.$Message.success('Success!');
+          });
         } 
-      })
+      });
     },
     reset: function(name){
       this.$refs[name].resetFields();

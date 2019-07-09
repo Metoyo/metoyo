@@ -204,8 +204,6 @@ export default {
               blg.createtime = that.$comn.dateFromObjectId(blg._id);
             });
             that.blogList = data.data;
-            console.log(data.data);
-            // that.page.total = that.categoryList.length;
           }
           else{
             that.$Message.error({content: data.error, duration: 300, closable: true});

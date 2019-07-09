@@ -13,6 +13,9 @@ export default {
   },
   methods: {
     
+  },
+  created: function(){
+    
   }
 }
 </script>
