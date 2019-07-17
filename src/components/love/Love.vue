@@ -1,7 +1,7 @@
 <template>
   <div class="container love">
     <div class="content">
-      <h1>我的最爱</h1>
+      <h1>我的最爱，暂时不显示</h1>
     </div>
   </div>
 </template>
