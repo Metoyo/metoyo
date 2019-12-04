@@ -2,12 +2,12 @@
   <header id="header" class="header-little">
     <!-- 首页导航 -->
     <div class="logo-box fll">
-      <img class="logo" src="@/assets/logo.png">
+      <img class="logo" src="@/assets/metoyo.png">
     </div>
     <div class="right-box flr">
-      <Menu mode="horizontal" theme="light" :active-name="activeMenu" class="fll" @on-select='changeMenu'>
+      <Menu mode="horizontal" theme="light" :active-name="activeMenu" class="menu fll" @on-select='changeMenu'>
         <MenuItem v-for="(mu, index) in menuList" :key="index" :name="mu.name" :to="mu.url">
-          <Icon :type="mu.icon" />
+          <!-- <Icon :type="mu.icon" /> -->
           {{mu.name}}
         </MenuItem>
         <!-- <MenuItem name="Management" to="/admin" v-if="user['管理员']">
@@ -61,10 +61,10 @@
       return {
         activeMenu: '',
         menuList: [
-          { name: 'Me', url: '/home', icon: 'ios-home'},
-          { name: 'Blog', url: '/blog', icon: 'ios-paper'},
-          { name: 'Area 51', url: '/goods', icon: 'ios-nuclear'},
-          { name: 'My Princess', url: '/love', icon: 'ios-paw'},
+          { name: 'BLOG', url: '/blog', icon: 'ios-paper'},
+          { name: '关于', url: '/home', icon: 'ios-home'},
+          // { name: 'Area 51', url: '/goods', icon: 'ios-nuclear'},
+          // { name: 'My Princess', url: '/love', icon: 'ios-paw'},
           // { name: 'Management', url: '/admin', icon: 'ios-settings'}
         ],
         loginUsr: ''
@@ -131,11 +131,19 @@
     align-items: center;
     background-color: #fff;
     padding: 0 30px;
-    box-shadow: 0 2px 10px #bbb;
+    box-shadow: 0 1px 5px #bbb;
+  }
+  .logo-box{
+    margin-top: 16px;
+    height: 24px;
   }
   .logo{
-    width: 42px;
-    height: 42px;
-    margin-top: 7px;
+    height: 24px;
+  }
+  .menu{
+    font-weight: 500;
+  }
+  .menu .ivu-menu-item{
+    font-size: 16px;
   }
 </style>

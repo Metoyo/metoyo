@@ -33,7 +33,7 @@
             <Button target="_blank" :to="'/blog/' + atl._id" size="small" type="info" class="flr">阅读全文</Button>
           </h4>
         </article>
-        <div>
+        <div class="fz14">
           <Page :total="page.total" :current="page.currentPage" :page-size="page.pageSize" size="small" show-total @on-change="changePage"/>
         </div>
       </div>

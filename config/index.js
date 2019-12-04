@@ -7,10 +7,20 @@ const path = require('path')
 module.exports = {
   dev: {
 
-    // Paths
+    // Paths 此处处理跨域问题
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api': {
+        target: 'http://192.168.1.171:8081',
+        changeOrigin: true,
+        // ws: true, // 是否启用websockets
+        // secure: true,  // 如果是https接口，需要配置这个参数
+        pathRewrite: {
+          '^/api': '/'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: '127.0.0.1', // can be overwritten by process.env.HOST

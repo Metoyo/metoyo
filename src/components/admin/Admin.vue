@@ -109,8 +109,11 @@ export default {
   methods: {
     ...mapMutations(['updateUserInfo']),
     gotoModule: function(){
+      console.log(this.user);
+      // this.$router.push({ path: '/systemeditor' });
       if(this.user.admin){
-        this.$router.push({ path: '/articlelist' });
+        console.log();
+        this.$router.push({ path: '/systemeditor' });
       }
       else{
         this.$router.push({ path: '/login' });
@@ -123,6 +126,7 @@ export default {
         username: null,
         email: null,
         phone: null,
+        role: null,
         admin: false
       };
       this.delCookie('checkLogin');
@@ -141,19 +145,19 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .layout{
-    border: 1px solid #d7dde4;
-    background: #f5f7f9;
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .layout-header-bar{
-    background: #fff;
-    box-shadow: 0 1px 1px rgba(0,0,0,.1);
-  }
-  .login-info{
-    background: #76829c;
-    text-align: left;
-    padding: 10px 0;
-  }
+  border: 1px solid #d7dde4;
+  background: #f5f7f9;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.layout-header-bar{
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+.login-info{
+  background: #76829c;
+  text-align: left;
+  padding: 10px 0;
+}
 </style>

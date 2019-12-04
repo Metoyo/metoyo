@@ -74,7 +74,10 @@ export default {
               if(data.result){
                 if(data.data && data.data[0]){
                   var usrInfo = data.data[0];
-                  usrInfo.admin = true;
+                  usrInfo.admin = false;
+                  if(usrInfo.role === 0){
+                    usrInfo.admin = true;
+                  }
                   var usrInfoStr = JSON.stringify(usrInfo);
                   that.setCookie('checkLogin', usrInfoStr);
                   that.updateUserInfo(usrInfo);

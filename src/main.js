@@ -17,8 +17,8 @@ Vue.use(PlgCommon);
 //Vuex配置
 const store = new Vuex.Store({
   state: {
-    domain: 'http://127.0.0.1:8000', //保存后台请求的地址，修改时方便
-    // domain: '', //保存后台请求的地址，修改时方便
+    // domain: 'http://127.0.0.1:8081', //保存后台请求的地址，修改时方便
+    domain: '/api', //保存后台请求的地址，修改时方便
     // activeMenu: 'Me',
     user: { //保存用户信息
       _id: null,
@@ -26,6 +26,7 @@ const store = new Vuex.Store({
       username: null,
       email: null,
       phone: null,
+      role: null,
       admin: false
     }
   },
@@ -52,7 +53,8 @@ function isEmptyObject(obj) {
 //获取cookie
 Vue.prototype.getCookie = (name) => {
   var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-  if (arr = document.cookie.match(reg)) {
+  if (document.cookie.match(reg)) {
+    arr = document.cookie.match(reg);
     return (arr[2]);
   }
   else {

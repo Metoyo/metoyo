@@ -46,7 +46,7 @@ img{
   color: #2c3e50;
 }
 #main{
-  min-height: 560px;
+  /* min-height: 560px; */
 }
 .container{
   max-width: 1220px;
@@ -55,6 +55,7 @@ img{
   display: table;
   padding-bottom: 20px;
   padding-top: 80px;
+  min-height: 680px;
 }
 .content{
   max-width: 960px;
